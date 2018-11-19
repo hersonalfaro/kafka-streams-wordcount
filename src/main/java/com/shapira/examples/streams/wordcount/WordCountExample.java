@@ -21,7 +21,7 @@ public class WordCountExample {
         String bootstrapServers = Optional.ofNullable(args).filter( arr -> arr.length == 1).map( arr -> arr[0]).orElse("localhost:9092");
         System.out.println(String.format("Bootstrap servers: %s", bootstrapServers));
 
-        System.exit(0);
+
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "wordcount");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
