@@ -1,6 +1,5 @@
 package com.shapira.examples.streams.wordcount;
 
-
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
@@ -11,16 +10,21 @@ import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KStreamBuilder;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
 public class WordCountExample {
 
     public static void main(String[] args) throws Exception{
+        
+        String bootstrapServers = Optional.ofNullable(args).filter( arr -> arr.length == 1).map( arr -> arr[0]).orElse("localhost:9092");
+        System.out.println(String.format("Bootstrap servers: %s", bootstrapServers));
 
+        System.exit(0);
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "wordcount");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(StreamsConfig.KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         props.put(StreamsConfig.VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
 

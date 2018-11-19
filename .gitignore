@@ -1,0 +1,4 @@
+.idea/
+kafka-streams-wordcount.iml
+src/main/main.iml
+target/
