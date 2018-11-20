@@ -19,7 +19,7 @@ public class WordCountExample {
     public static void main(String[] args) throws Exception{
         
         String bootstrapServers = Optional.ofNullable(args).filter( arr -> arr.length == 1).map( arr -> arr[0]).orElse("localhost:9092");
-        System.out.println(String.format("Bootstrap servers: %s", bootstrapServers));
+        System.out.println(String.format("Bootstrap servers: [%s]", bootstrapServers));
 
 
         Properties props = new Properties();
